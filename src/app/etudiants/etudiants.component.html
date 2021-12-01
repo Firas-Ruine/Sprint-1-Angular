@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <table class="table table-striped">
+        <tr>
+          <th>Id</th>
+          <th>Nom</th>
+          <th>Prenom</th>
+          <th>Date Inscription</th>
+          <th>Section</th>
+          <th>Supprimer</th>
+          <th>Modifier</th>
+        </tr>
+        <tbody *ngFor="let etudiant of etudiants">
+          <tr>
+            <td>
+              {{ etudiant.idEtudiant }}
+            </td>
+            <td>
+              {{ etudiant.nom }}
+            </td>
+            <td>
+              {{ etudiant.prenom }}
+            </td>
+            <td>
+              {{ etudiant.dateInscri |date: 'dd/MM/yyyy' }}
+            </td>
+            <td>
+              {{ etudiant.Section }}
+            </td>
+            <td><a class="btn btn-danger" (click)= "supprimerEtudiant(etudiant)">Supprimer</a></td>
+            <td><a class="btn btn-success" [routerLink]="['/updateEtudiant',etudiant.idEtudiant]">Modifier</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
+
