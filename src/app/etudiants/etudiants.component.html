@@ -26,7 +26,7 @@
               {{ etudiant.dateInscri |date: 'dd/MM/yyyy' }}
             </td>
             <td>
-              {{ etudiant.Section }}
+              {{ etudiant.section }}
             </td>
             <td><a class="btn btn-danger" (click)= "supprimerEtudiant(etudiant)">Supprimer</a></td>
             <td><a class="btn btn-success" [routerLink]="['/updateEtudiant',etudiant.idEtudiant]">Modifier</a></td>

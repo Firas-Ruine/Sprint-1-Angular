@@ -8,8 +8,6 @@ headers: new HttpHeaders( {
   'Access-Control-Allow-Origin':'*',
   'Authorization':'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIkFETUlOIiwiVVNFUiJdLCJleHAiOjE2Mzg5MDcxOTV9.ArMwzd0XR8Y4fl_U7wsaWJ613gJGFKUKngPSSELxCDs',
 } )
-
-
 };
 @Injectable({
   providedIn: 'root'

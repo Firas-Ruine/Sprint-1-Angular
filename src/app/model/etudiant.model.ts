@@ -3,5 +3,5 @@ export class Etudiant {
   nom!: string;
   prenom!: string;
   dateInscri!: Date;
-  Section!: string;
+  section!: string;
 }
