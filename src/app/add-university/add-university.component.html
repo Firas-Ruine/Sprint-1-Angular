@@ -1,0 +1,25 @@
+
+<div class="container mt-5">
+
+  <div>
+  <h2>Ajouter une Université :</h2>
+  </div>
+  <form >
+    <div class="col-sm-4 col-md-4 col-lg-4">
+    <label >ID Université</label>
+    <input disabled type="text" [(ngModel)]="newUniversity.idUni" name="idUniversite" class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4" >
+    <label >Nom Université</label>
+    <input type="text" [(ngModel)]="newUniversity.nom" name="nom" class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+    <label >Pays Universite</label>
+    <input type="text" [(ngModel)]="newUniversity.pays" name="pays" class="form-control">
+    </div>
+
+    <div class="mt-2 btn">
+    <button type="submit" (click)="addUniversity()" class="btn btn-success">Ajouter</button>
+    </div>
+    </form>
+    </div>

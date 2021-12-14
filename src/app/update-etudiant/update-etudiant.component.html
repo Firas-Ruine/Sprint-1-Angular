@@ -33,6 +33,14 @@
     name="section" class="form-control">
 </div>
 
+<div class="col-sm-4 col-md-4 col-lg-4">
+  <label>Université </label>
+  <select class="form-control" id="idUni" [ngModel]="currentEtudiant.universite" [ngModelOptions]="{standalone: true}">
+    <option [selected]="true"  [ngValue]="currentEtudiant.universite">{{currentEtudiant.universite}}</option>
+
+      </select>
+  </div>
+
 
   <div class="mt-2">
   <button type="submit" (click)="updateEtudiant()" class="btn btn-success">Modifier</button>

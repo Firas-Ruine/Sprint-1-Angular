@@ -4,4 +4,5 @@ export class Etudiant {
   prenom!: string;
   dateInscri!: Date;
   section!: string;
+  universite!:string;
 }

@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <table class="table table-striped">
+        <tr>
+          <th>Id</th>
+          <th>Nom</th>
+          <th>Pays</th>
+          <th>Supprimer</th>
+          <th>Modifier</th>
+        </tr>
+        <tbody *ngFor="let uni of universities">
+          <tr>
+            <td>
+              {{ uni.idUni }}
+            </td>
+            <td>
+              {{ uni.nom }}
+            </td>
+            <td>
+              {{ uni.pays }}
+            </td>
+            <td><a class="btn btn-danger" (click)= "supprimerUniversity(uni)">Supprimer</a></td>
+            <td><a class="btn btn-success" [routerLink]="['/updateUniversity',uni.idUni]">Modifier</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
+

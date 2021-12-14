@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Etudiant } from '../model/etudiant.model';
 import { Observable } from 'rxjs';
+import { AuthService } from './auth.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 const httpOptions = {
 headers: new HttpHeaders( {
   'Content-Type': 'application/json',
   'Access-Control-Allow-Origin':'*',
-  'Authorization':'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjpbIkFETUlOIiwiVVNFUiJdLCJleHAiOjE2Mzg5MDcxOTV9.ArMwzd0XR8Y4fl_U7wsaWJ613gJGFKUKngPSSELxCDs',
 } )
 };
 @Injectable({
@@ -16,15 +16,19 @@ export class EtudiantService {
   apiURL: string = 'http://localhost:8080/etudiants/api';
   etudiants: Etudiant[]=[];
  // etudiant?: Etudiant;
-  constructor(private http : HttpClient) {
+  constructor(private http : HttpClient , private authService:AuthService) {
 
 
    }
    listeEtudiants():Observable<any>{
-    return this.http.get(this.apiURL,httpOptions);
-
-
+    let jwt = this.authService.getToken();
+    jwt = "Bearer "+jwt;
+     let httpHeaders = new HttpHeaders({"Authorization":jwt})
+     return this.http.get(this.apiURL+"/all",{headers:httpHeaders}
+);
    }
+
+
    /*ngOnInit(): void {
     this.etudiantService.listeEtudiants().subscribe(etuds => {
     console.log(etuds);
@@ -33,17 +37,26 @@ export class EtudiantService {
     }*/
 
    ajouterEtudiants(etud:Etudiant):Observable<Etudiant>{
-    return this.http.post<Etudiant>(this.apiURL, etud,httpOptions);
+    let jwt = this.authService.getToken();
+jwt = "Bearer "+jwt;
+let httpHeaders = new HttpHeaders({"Authorization":jwt})
+return this.http.post<Etudiant>(this.apiURL, etud, {headers:httpHeaders});
    }
    supprimerEtudiant( id:number){
     const url = `${this.apiURL}/${id}`;
-    return this.http.delete(url,httpOptions);
+let jwt = this.authService.getToken();
+jwt = "Bearer "+jwt;
+let httpHeaders = new HttpHeaders({"Authorization":jwt})
+return this.http.delete(url, {headers:httpHeaders});
     }
 
 
   consulterEtudiant(id:number): Observable<Etudiant>{
     const url = `${this.apiURL}/${id}`;
-    return this.http.get<Etudiant>(url,httpOptions);
+let jwt = this.authService.getToken();
+jwt = "Bearer "+jwt;
+let httpHeaders = new HttpHeaders({"Authorization":jwt})
+return this.http.get<Etudiant>(url,{headers:httpHeaders});
     }
   get(url: string): Observable<any> {
     throw new Error('Method not implemented.');
@@ -52,7 +65,10 @@ export class EtudiantService {
 
 
     updateEtudiant(etud:Etudiant):Observable<Etudiant>{
-       return this.http.put<Etudiant>(`${this.apiURL}`,etud,httpOptions)
+      let jwt = this.authService.getToken();
+      jwt = "Bearer "+jwt;
+      let httpHeaders = new HttpHeaders({"Authorization":jwt})
+      return this.http.put<Etudiant>(this.apiURL, etud, {headers:httpHeaders});
     }
 
 }
